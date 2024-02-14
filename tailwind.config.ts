@@ -1,20 +1,24 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
 
-const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+export default {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      screens: {
+        "2xl": { max: "1535px" },
+        xl: { max: "1360px" },
+        lg: { max: "1200px" },
+        md: { max: "768px" },
+        sm: { max: "639px" },
+      },
+      gridTemplateColumns: {
+        fluid: "repeat(auto-fill,minmax(350px,1fr))",
+        fluidTwo: "repeat(auto-fill,minmax(300px,1fr))",
       },
     },
   },
-  plugins: [],
-};
-export default config;
+  daisyui: {
+    themes: ["cupcake"],
+  },
+  plugins: [require("daisyui")],
+} satisfies Config;
